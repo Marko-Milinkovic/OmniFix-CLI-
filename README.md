@@ -1,15 +1,50 @@
-
 # OmniFix CLI — Project Analyzer, Fixer & Code Generator  
 *A powerful local AI engineering tool powered by Anthropic Claude.*
 
 OmniFix CLI turns Claude into a **full development assistant**, available directly from your terminal.  
 It can fix files, refactor entire projects, analyze multi-file codebases, generate new modules, rewrite project architecture, and answer deep questions about your code — all via a single command:
-
 ```
 claude
 ```
 
 This tool is designed to function as a **local autonomous code engineer**, not just a chatbot.
+
+---
+
+## Table of Contents
+
+- [General Properties of the Agent](#general-properties-of-the-agent)
+  - [Multi-Mode Developer Agent](#multi-mode-developer-agent)
+  - [Works on Entire Codebases, Not Just Files](#works-on-entire-codebases-not-just-files)
+  - [Local, Safe, and Controlled](#local-safe-and-controlled)
+  - [Multi-Language Capable](#multi-language-capable)
+  - [Fast & Lightweight (Haiku Model)](#fast--lightweight-haiku-model)
+  - [Deterministic and Repeatable](#deterministic-and-repeatable)
+- [Why This Beats Cursor / Claude Web UI](#why-this-beats-cursor--claude-web-ui)
+  - [What Claude CLI Can Do That Cursor Cannot](#what-claude-cli-can-do-that-cursor-cannot)
+- [Features](#features)
+  - [🟦 Project Analyzer Mode](#-project-analyzer-mode)
+  - [🟧 Project Q&A Mode](#-project-qa-mode)
+  - [🟨 File Modes](#-file-modes)
+  - [🟥 Folder Modes](#-folder-modes)
+  - [🟩 Project-Aware File Generation](#-project-aware-file-generation)
+  - [🟪 Chat Mode](#-chat-mode)
+  - [🟫 One-Shot Prompt](#-one-shot-prompt)
+- [🚀 Chat Mode (Detailed)](#-chat-mode-detailed)
+  - [Why Use Chat Mode?](#why-use-chat-mode)
+  - [When NOT to Use Chat Mode](#when-not-to-use-chat-mode)
+  - [Chat Mode vs Non-Chat Mode](#chat-mode-vs-non-chat-mode)
+  - [The Rule of Thumb](#the-rule-of-thumb)
+- [Installation](#installation)
+- [ Top 10 OmniFix Superpowers](#-top-10-omnifix-superpowers)
+- [ 50 OmniFix CLI Usage Examples](#-50-omnifix-cli-usage-examples)
+  - [🟨🟫 1–10: One-Shot Prompts & File-Level Operations](#-110-one-shot-prompts--file-level-operations)
+  - [🟦🟧🟩 11–20: Project-Wide Analysis & Q&A](#-1120-project-wide-analysis--qa)
+  - [🟥 21–30: Full-Folder Fix, Refactor, Rewrite](#-2130-full-folder-fix-refactor-rewrite)
+  - [31–40: Advanced Multi-Language Assistance](#-3140-advanced-multi-language-assistance)
+  - [🚀 41–50: Chat Mode + Bonus Abilities](#-4150-chat-mode--bonus-abilities)
+- [Internals / Dispatch Order](#internals--dispatch-order)
+- [Notes](#notes)
 
 ---
 
@@ -69,7 +104,6 @@ Supports any text-based source file:
 
 ### **Fast & Lightweight (Haiku Model)**  
 Using:
-
 ```
 claude-3-haiku-20240307
 ```
@@ -93,7 +127,7 @@ The OmniFix CLI uses clean deterministic prompts.
 
 ---
 
-#  Why This Beats Cursor / Claude Web UI
+# Why This Beats Cursor / Claude Web UI
 
 ### **Cursor is interactive. OmniFix CLI is automated.**
 
@@ -134,7 +168,6 @@ OmniFix CLI does:
 # Features
 
 ## 🟦 Project Analyzer Mode
-
 ```
 claude --analyze-folder <folder>
 ```
@@ -154,7 +187,6 @@ Returns:
 ---
 
 ## 🟧 Project Q&A Mode
-
 ```
 claude --project-qa <folder> "Where is main state machine implemented?"
 ```
@@ -169,7 +201,7 @@ Then answers precisely.
 
 ---
 
-# 🟨 File Modes
+## 🟨 File Modes
 
 ### Fix a file
 ```
@@ -198,9 +230,9 @@ claude --diff old.py new.py
 
 ---
 
-# 🟥 Folder Modes
+## 🟥 Folder Modes
 
-##  Fix Entire Folder
+### Fix Entire Folder
 ```
 claude --fix-folder <project>
 ```
@@ -209,7 +241,7 @@ Output: `<project>_fixed/`
 
 ---
 
-##  Refactor Entire Folder
+### Refactor Entire Folder
 ```
 claude --refactor-folder <project>
 ```
@@ -218,8 +250,7 @@ Output: `<project>_refactored/`
 
 ---
 
-##  Rewrite Entire Folder (Aggressive)
-
+### Rewrite Entire Folder (Aggressive)
 ```
 claude --rewrite-folder <project>
 ```
@@ -238,8 +269,7 @@ Output: `<project>_rewritten/`
 
 ---
 
-# 🟩 Project-Aware File Generation
-
+## 🟩 Project-Aware File Generation
 ```
 claude --generate-file "create metadata loader" --out loader.py --project-root .
 ```
@@ -248,8 +278,7 @@ Claude adapts to your architecture.
 
 ---
 
-# 🟪 Chat Mode
-
+## 🟪 Chat Mode
 ```
 claude --chat
 ```
@@ -262,13 +291,14 @@ Commands:
 
 ---
 
-# 🟫 One-Shot Prompt
-
+## 🟫 One-Shot Prompt
 ```
 claude "explain CNN in simple terms"
 ```
 
-# 🟦 Chat Mode
+---
+
+# 🚀 Chat Mode (Detailed)
 
 OmniFix CLI includes a persistent **Chat Mode**, turning Claude into an interactive terminal-native AI developer, similar to having a senior engineer working with you in real time.
 
@@ -344,20 +374,20 @@ This is something one-shot modes cannot do.
 
 Use normal modes instead of chat when you want:
 
-** Deterministic file output**
+**Deterministic file output**
 ```bash
 claude --fix file.py
 claude --refactor engine.cpp
 ```
 
-** Full-project operations**
+**Full-project operations**
 ```bash
 claude --fix-folder project/
 claude --refactor-folder project/
 claude --rewrite-folder project/
 ```
 
-** One-shot, clean output**
+**One-shot, clean output**
 ```bash
 claude --project-qa src/ "Where is inference done?"
 ```
@@ -401,17 +431,17 @@ setx ANTHROPIC_API_KEY "your-key-here"
 
 ### 4. Create launcher
 `C:\Windows\claude.bat`
-
 ```bat
 @echo off
 py "%USERPROFILE%\Desktop\claude_cli.py" %*
 ```
 
 Now run from anywhere:
-
 ```
 claude
 ```
+
+---
 
 # Top 10 OmniFix Superpowers
 
@@ -556,8 +586,337 @@ It expands Claude into a **universal engineering refactoring tool**.
 
 ---
 
-# Internals / Dispatch Order
+# ✅ 50 OmniFix CLI Usage Examples
+(command → effect)
 
+---
+
+## 🟨🟫 1–10: One-Shot Prompts & File-Level Operations
+
+### 1. One-shot natural language answer
+```bash
+claude "explain BFS in simple terms"
+```
+→ One-shot natural language answer.
+
+### 2. Attach file + ask a question
+```bash
+claude -f main.py "What is wrong with this function?"
+```
+→ Attaches file + asks a question.
+
+### 3. Full file explanation
+```bash
+claude --explain server.py
+```
+→ Full explanation of server.py: purpose, flow, pitfalls.
+
+### 4. Fix file to stdout
+```bash
+claude --fix dataset.py
+```
+→ Returns fixed version of dataset.py to stdout.
+
+### 5. Fix file and save output
+```bash
+claude --fix dataset.py --out dataset_fixed.py
+```
+→ Saves corrected dataset to dataset_fixed.py.
+
+### 6. Refactor file to stdout
+```bash
+claude --refactor model.py
+```
+→ Clean, readable, commented version of model.py.
+
+### 7. Refactor C++ file and save
+```bash
+claude --refactor model.cpp --out model_refactored.cpp
+```
+→ Modernized C++17 refactor of a cpp file.
+
+### 8. Semantic diff explanation
+```bash
+claude --diff old.cpp new.cpp
+```
+→ Unified diff + explanation.
+
+### 9. Generate Python file from description
+```bash
+claude --generate-file "build a CNN class" --out cnn.py
+```
+→ Creates a new architecture-aware file.
+
+### 10. Generate C++ header file
+```bash
+claude --generate-file "create a header-only C++ vector math library" --out math.hpp
+```
+→ Generates C++ code.
+
+---
+
+## 🟦🟧🟩 11–20: Project-Wide Analysis & Q&A
+
+### 11. Full project analysis
+```bash
+claude --analyze-folder .
+```
+→ Full root project analysis.
+
+### 12. Performance-focused analysis
+```bash
+claude --analyze-folder backend/ --focus "performance"
+```
+→ Architecture + performance review.
+
+### 13. Project Q&A - find implementation
+```bash
+claude --project-qa src/ "Where is the main state machine implemented?"
+```
+→ Precise answer with file references.
+
+### 14. Project Q&A - routing explanation
+```bash
+claude --project-qa app/ --question "How is routing handled?"
+```
+→ Responds with routing explanation.
+
+### 15. Memory safety audit
+```bash
+claude --analyze-folder engine/ --focus "memory safety"
+```
+→ C++ RAII/memory-safety audit.
+
+### 16. Project Q&A - AI logic flow
+```bash
+claude --project-qa mygame/ "Explain enemy AI decision flow"
+```
+→ Describes logic across files.
+
+### 17. Security-focused analysis
+```bash
+claude --analyze-folder frontend/ --focus "security+auth"
+```
+→ Security-oriented review.
+
+### 18. Project Q&A - database connection
+```bash
+claude --project-qa . "Where is database connection created?"
+```
+→ Gives filename, line ranges, and structure.
+
+### 19. OOP design improvement plan
+```bash
+claude --analyze-folder . --focus "improve OOP design"
+```
+→ High-level architecture refactor plan.
+
+### 20. Project Q&A - architecture suggestion
+```bash
+claude --project-qa src/ "Where should I add caching layer?"
+```
+→ Suggests design + placement.
+
+---
+
+## 🟥 21–30: Full-Folder Fix, Refactor, Rewrite
+
+### 21. Fix entire project
+```bash
+claude --fix-folder myproject
+```
+→ Fixes ALL files → myproject_fixed/
+
+### 22. Refactor entire backend
+```bash
+claude --refactor-folder backend
+```
+→ Refactors all code → backend_refactored/
+
+### 23. Rewrite engine with new architecture
+```bash
+claude --rewrite-folder engine
+```
+→ Creates fully rewritten engine_rewritten/ with new architecture.
+
+### 24. Fix C++ project
+```bash
+claude --fix-folder cpp_project
+```
+→ Fixes .cpp/.h files using C++17 best practices.
+
+### 25. Modernize JavaScript project
+```bash
+claude --refactor-folder js_app
+```
+→ Modern ES6+ modularization across JS project.
+
+### 26. Rewrite legacy Java project
+```bash
+claude --rewrite-folder legacy_java
+```
+→ Produces clean modern Java package structure.
+
+### 27. Fix web project
+```bash
+claude --fix-folder web/
+```
+→ HTML/CSS/JS cleanup.
+
+### 28. Refactor algorithms folder
+```bash
+claude --refactor-folder algorithms/
+```
+→ Refactors entire algorithms folder with comments.
+
+### 29. Rewrite parser architecture
+```bash
+claude --rewrite-folder parser/
+```
+→ Rewrites parser into new architecture (e.g., classes, modules).
+
+### 30. Fix PyTorch training code
+```bash
+claude --fix-folder pytorch_training
+```
+→ Fixes PyTorch issues: device handling, gradients, etc.
+
+---
+
+## 31–40: Advanced Multi-Language Assistance
+
+### 31. Fix C++ file
+```bash
+claude --fix main.cpp
+```
+→ Patch memory bugs, UB, modern C++ cleanup.
+
+### 32. Refactor Java file
+```bash
+claude --refactor Engine.java
+```
+→ Pure Java refactor, idiomatic naming, better OOP.
+
+### 33. Fix JavaScript async issues
+```bash
+claude --fix script.js
+```
+→ Fixes race conditions + async flow.
+
+### 34. Refactor HTML semantically
+```bash
+claude --refactor index.html
+```
+→ Semantic cleanup + structuring.
+
+### 35. Rewrite React app
+```bash
+claude --rewrite-folder react_app
+```
+→ Fully rewritten modern React architecture.
+
+### 36. Generate TypeScript types
+```bash
+claude --generate-file "TypeScript interface definitions for API" --out types.ts
+```
+→ Generates TS types.
+
+### 37. Fix Go server code
+```bash
+claude --fix server.go
+```
+→ Idiomatic Go code cleanup.
+
+### 38. Refactor Kotlin app
+```bash
+claude --refactor app.kt
+```
+→ Kotlin idiomatic refactor.
+
+### 39. Clean up CSS
+```bash
+claude --fix styles.css
+```
+→ Cleans up CSS without altering layout.
+
+### 40. Generate Rust module
+```bash
+claude --generate-file "Rust struct for telemetry parser" --out parser.rs
+```
+→ Creates Rust module.
+
+---
+
+## 🚀 41–50: Chat Mode + Bonus Abilities
+
+### 41. Start chat mode
+```bash
+claude --chat
+```
+→ Start full REPL chat session.
+
+### 42. Attach file in chat
+Inside chat:
+```
+/file model.py
+```
+→ Attaches model.py into the chat context.
+
+### 43. Load project in chat
+Inside chat:
+```
+/project D:\Projects\Engine
+```
+→ Loads project tree into memory.
+
+### 44. Multi-step architecture redesign
+Inside chat:
+```
+Explain the architecture and redesign it
+```
+→ Multi-step reasoning with Claude remembering context.
+
+### 45. Localized modern C++ rewrite
+Inside chat:
+```
+Rewrite only this function into modern C++
+```
+→ Precise localized rewrites.
+
+### 46. Iterative debugging session
+Inside chat:
+```
+Help me debug this training loop
+```
+→ Iterative debugging with follow-up questions.
+
+### 47. File-attached debugging
+```bash
+claude -f train.py "Why is my model not converging?"
+```
+→ File-attached debugging.
+
+### 48. Detect dead code
+```bash
+claude --analyze-folder . --focus "dead code"
+```
+→ Detects unused modules/functions.
+
+### 49. Natural text transformation
+```bash
+claude "Rewrite this prompt for a 10-year-old"
+```
+→ Natural text transformation.
+
+### 50. Production-level code generation
+```bash
+claude --generate-file "C++ header for vector class with operator overloading" --out vector.hpp
+```
+→ Production-level code generation.
+
+---
+
+# Internals / Dispatch Order
 ```
 --chat
 --analyze-folder
@@ -579,4 +938,5 @@ default: one-shot
 - editor-independent  
 
 ---
+
 Enjoy building with your new **local AI engineer**.
