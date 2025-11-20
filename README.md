@@ -173,6 +173,11 @@ claude --refactor <file>
 claude -f <file> "question"
 ```
 
+### Difference between two files
+```
+claude --diff old_file.py new_file.py
+```
+
 ---
 
 ## 🟥 Project Modes
