@@ -227,6 +227,34 @@ claude --refactor-folder <folder>
 claude --refactor-folder "D:\etf\hakatoni\rivian\rivian_ml"
 ```
 
+### Rewrite Whole Folder (Aggressive Architecture Rewrite)
+This mode performs a **full architectural rewrite** of an entire Python project.  
+
+Unlike `--fix-folder` (bug fixes) and `--refactor-folder` (safe cleanups with no behavior change),  
+`--rewrite-folder` is a **high-level redesign tool**.
+
+Note:  
+`rewrite-folder` **does not guarantee backward compatibility**.  
+
+### Usage
+```
+claude --rewrite-folder <folder>
+```
+
+### Example
+```
+claude --rewrite-folder "D:\etf\hakatoni\rivian\rivian_ml"
+```
+
+This will generate a completely modernized version of the project inside: rivian_ml_rewritten/
+
+All folder structure is preserved, but each `.py` file receives a full architectural rewrite.
+
+### Output
+- Fully rewritten project into `<original>_rewritten/`
+- Same folder structure, new code
+- Deeply improved clarity, modularity, maintainability
+
 ---
 
 ## 🟩 File Generation Mode (project aware)
