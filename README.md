@@ -413,6 +413,149 @@ Now run from anywhere:
 claude
 ```
 
+# Top 10 OmniFix Superpowers
+
+## 1. Full-Folder Healing (Automatic Project-Wide Bug Fixer)
+
+Run one command and OmniFix will recursively scan your entire project (Python, C++, Java, JS, Kotlin, Rust, Go, HTML, CSS…) and produce a fully fixed, cleaned, and safer version of your entire codebase.
+
+**No IDE on Earth does that.**
+```bash
+claude --fix-folder myproject
+```
+
+---
+
+## 2. Multi-Language AI Refactoring Engine
+
+OmniFix intelligently rewrites and modernizes:
+* **Python** → Type hints, cleaner architecture
+* **C++** → RAII, smart pointers, const-correctness
+* **Java** → OOP cleanup, package structure
+* **Kotlin** → Idiomatic, null-safe, Android-ready
+* **JS/TS** → Modern ES6+, modular, async improvements
+```bash
+claude --refactor file.cpp
+```
+
+It applies language-aware engineering best practices automatically.
+
+---
+
+## 3. Architectural Rewrite Mode (New Project Structure)
+
+This is the **nuclear option**. A single command produces an entirely redesigned, modern architecture for your project.
+```bash
+claude --rewrite-folder legacy_app
+```
+
+You get a new clean codebase while preserving the same functional purpose.
+
+---
+
+## 4. Repository-Level AI Analysis
+
+OmniFix generates a deep architecture report:
+* Purpose of every file
+* Dependency flow
+* Detected bugs
+* Security issues
+* Dead code
+* Style and OOP violations
+* Refactor & improvement plan
+* ASCII diagrams
+* Quality score
+```bash
+claude --analyze-folder .
+```
+
+**Equivalent to a professional code audit.**
+
+---
+
+## 5. Diff Understanding Like a Senior Engineer
+
+OmniFix doesn't just generate diffs. It **explains** them:
+* What changed
+* Why it changed
+* Possible regressions
+* Improvements
+* Architectural insights
+```bash
+claude --diff old.cpp new.cpp
+```
+
+This is beyond `git diff` — it is **semantic diffing**.
+
+---
+
+## 6. Full Project Q&A (Codebase Genius Mode)
+
+Ask OmniFix anything about your project, and it answers with context from the entire repository.
+```bash
+claude --project-qa src/ "Where is the rendering pipeline implemented?"
+```
+
+This creates **instant understanding** of new or inherited projects.
+
+---
+
+## 7. Contextual File/Module Generation
+
+Generate new modules in perfect alignment with your project's architecture.
+```bash
+claude --generate-file "Create a scene detector class" --out detector.py --project-root .
+```
+
+The new file looks like it was written by the same engineering team.
+
+---
+
+## 8. OmniFix Chat Mode (Live Engineering Assistant)
+
+Advanced REPL chat that supports attaching files and entire projects:
+```bash
+claude --chat
+/file model.py
+/project backend/
+```
+
+OmniFix becomes an interactive senior engineer inside your terminal.
+
+---
+
+## 9. Multi-File Thinking & Deep Context Integration
+
+Attach unlimited files and entire project structures during Chat Mode, making OmniFix capable of:
+* Multi-file debugging
+* Understanding cross-file logic
+* Tracing flows (e.g., controller → service → model)
+* Answering architecture questions
+
+This works better than typical LLM chat because you explicitly supply structured context.
+
+---
+
+## 10. Full Cross-Language Power
+
+OmniFix is truly **polyglot**.
+
+Supports fixing/refactor/rewrite for:
+* Python
+* C / C++
+* Java
+* Kotlin
+* JavaScript / TypeScript
+* Rust
+* Go
+* C#
+* PHP
+* HTML/CSS/XML/JSON/YAML
+
+It expands Claude into a **universal engineering refactoring tool**.
+
+---
+
 # Internals / Dispatch Order
 
 ```
