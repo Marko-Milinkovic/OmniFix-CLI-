@@ -20,8 +20,6 @@ This tool is designed to function as a **local autonomous code engineer**, not j
   - [Multi-Language Capable](#multi-language-capable)
   - [Fast & Lightweight (Haiku Model)](#fast--lightweight-haiku-model)
   - [Deterministic and Repeatable](#deterministic-and-repeatable)
-- [Why This Beats Cursor / Claude Web UI](#why-this-beats-cursor--claude-web-ui)
-  - [What Claude CLI Can Do That Cursor Cannot](#what-claude-cli-can-do-that-cursor-cannot)
 - [Features](#features)
   - [🟦 Project Analyzer Mode](#-project-analyzer-mode)
   - [🟧 Project Q&A Mode](#-project-qa-mode)
@@ -124,44 +122,6 @@ In contrast to the Claude Web UI:
 - no hallucinated memory  
 
 The OmniFix CLI uses clean deterministic prompts.
-
----
-
-# Why This Beats Cursor / Claude Web UI
-
-### **Cursor is interactive. OmniFix CLI is automated.**
-
-Cursor requires:
-
-- clicking through files  
-- opening tabs  
-- asking manually  
-
-OmniFix CLI does:
-
-- **entire folder scans automatically**  
-- architectural rewrites  
-- deterministic outputs  
-- can run inside pipelines  
-- works in PowerShell, CMD, Bash  
-- requires **no editor**  
-- works offline except for API  
-
----
-
-## What Claude CLI Can Do That Cursor Cannot
-
-| Feature | OmniFix CLI | Cursor |
-|--------|------------|--------|
-| Fix entire folder recursively | ✅ | ❌ |
-| Refactor whole project | ✅ | ❌ |
-| Rewrite architecture | ✅ | ❌ |
-| Runs outside editor | ✅ | ❌ |
-| Diff generation | ✅ | ❌ |
-| Script automation | ✅ | ❌ |
-| CI/CD support | ✅ | ❌ |
-| Multi-language folder ops | ✅ | ⚠️ limited |
-| Deterministic behavior | ✅ | ❌ |
 
 ---
 
